@@ -39,6 +39,7 @@ namespace ThinkPadScrollHelper
         public const uint BST_CHECKED = 0x0001;
 
         public const uint TCM_FIRST = 0x1300;
+        public const uint TCM_GETITEMCOUNT = TCM_FIRST + 4;
         public const uint TCM_SETCURSEL = TCM_FIRST + 12;
         public const uint TCM_SETCURFOCUS = TCM_FIRST + 48;
 

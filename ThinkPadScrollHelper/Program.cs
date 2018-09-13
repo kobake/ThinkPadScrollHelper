@@ -25,7 +25,7 @@ namespace ThinkPadScrollHelper
         static string m_findOption;
         public static IntPtr FindChildWindowByCaption(IntPtr hwnd, string caption)
         {
-            m_findOption = "@Text:" + caption;
+            m_findOption = "@Text:" + caption.ToLowerInvariant();
             m_found = IntPtr.Zero;
             Win32Api.EnumChildWindows(hwnd, EnumChildWindowCallBack, IntPtr.Zero);
             return m_found;
@@ -46,7 +46,7 @@ namespace ThinkPadScrollHelper
                 StringBuilder winText = new StringBuilder(textLen + 1);
                 Win32Api.GetWindowText(hWnd, winText, winText.Capacity);
                 // Console.WriteLine(tsb.ToString());
-                if ("@Text:" + winText.ToString() == m_findOption)
+                if ("@Text:" + winText.ToString().ToLowerInvariant() == m_findOption)
                 {
                     m_found = hWnd;
                     return false;

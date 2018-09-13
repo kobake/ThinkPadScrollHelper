@@ -41,7 +41,8 @@ namespace ThinkPadScrollHelper
             IntPtr hwndTab = Util.FindChildWindowByClassName(_hwndPropertyDialog, "SysTabControl32");
             if (hwndTab == IntPtr.Zero) throw new Exception("Mouse properties TabControl not found");
             Console.WriteLine("hwndTab = " + hwndTab);
-            Win32Api.PostMessage(hwndTab, Win32Api.TCM_SETCURFOCUS, new IntPtr(6), IntPtr.Zero);
+            int tabCount = Win32Api.SendMessage(hwndTab, Win32Api.TCM_GETITEMCOUNT, IntPtr.Zero, IntPtr.Zero);
+            Win32Api.PostMessage(hwndTab, Win32Api.TCM_SETCURFOCUS, new IntPtr(tabCount - 1), IntPtr.Zero);
             try
             {
                 Thread.Sleep(500);

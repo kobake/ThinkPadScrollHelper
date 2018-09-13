@@ -31,6 +31,14 @@ int main()
 {
     setlocale(LC_ALL, "");
 
+    if (false) {
+        HWND hwndTab = (HWND)0x000D0272;
+        int a = TCM_GETITEMCOUNT;
+        int n = SendMessage(hwndTab, TCM_GETITEMCOUNT, 0, 0);
+        printf("%d\n", n);
+        return 0;
+    }
+
     // ウィンドウ名表示テスト
     if (false) {
         
