@@ -41,7 +41,7 @@ namespace ThinkPadScrollHelper
             IntPtr hwndTab = Util.FindChildWindowByClassName(_hwndPropertyDialog, "SysTabControl32");
             if (hwndTab == IntPtr.Zero) throw new Exception("Mouse properties TabControl not found");
             Console.WriteLine("hwndTab = " + hwndTab);
-            Win32Api.PostMessage(hwndTab, Win32Api.TCM_SETCURFOCUS, new IntPtr(5), IntPtr.Zero);
+            Win32Api.PostMessage(hwndTab, Win32Api.TCM_SETCURFOCUS, new IntPtr(6), IntPtr.Zero);
             try
             {
                 Thread.Sleep(500);
@@ -53,7 +53,7 @@ namespace ThinkPadScrollHelper
 
             // チェックボックスを取得
             // _hwndCheck = Util.FindChildWindowByCaption(_hwndPropertyDialog, "Enable &TouchPad");
-            _hwndCheck = Util.FindChildWindowByCaption(_hwndPropertyDialog, "ThinkPad Preferred Scrolling");
+            _hwndCheck = Util.FindChildWindowByCaption(_hwndPropertyDialog, "Thinkpad Preferred Scrolling");
             if (_hwndCheck == IntPtr.Zero) throw new Exception("Mouse Properties Checkbox not found");
             Console.WriteLine("hwndCheck = " + _hwndCheck);
 
