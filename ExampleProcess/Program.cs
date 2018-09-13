@@ -1,12 +1,25 @@
-using System;
-using System.Diagnostics;
+﻿using System;
+using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
-using System.Windows.Forms;
 
 class Program
 {
+    [DllImport("user32.dll")] static extern IntPtr GetForegroundWindow();
+    [DllImport("user32.dll")] static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
+
     static void Main(string[] args)
     {
+        while(true)
+        {
+            Thread.Sleep(1000);
+
+            IntPtr hwnd = GetForegroundWindow();
+            StringBuilder buf = new StringBuilder(256);
+            GetWindowText(hwnd, buf, buf.Capacity);
+            Console.WriteLine("hwnd:0x{0:X} text:{1}", hwnd, buf.ToString());
+        }
+#if false
         if (true)
         {
             var fullpath = Environment.ExpandEnvironmentVariables(@"%windir%\system32\notepad.exe");
@@ -66,5 +79,6 @@ class Program
             Console.WriteLine($"---- Restart {scrollBackgroundName} ----");
             Process.Start(scrollBackgroundPath);
         }
+#endif
     }
 }
