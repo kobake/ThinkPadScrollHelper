@@ -1,16 +1,32 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 
 class Program
 {
-    [DllImport("user32.dll")] static extern IntPtr GetForegroundWindow();
+    // [DllImport("user32.dll")] static extern IntPtr GetForegroundWindow();
     [DllImport("user32.dll")] static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
-
+    [DllImport("user32.dll")] static extern IntPtr WindowFromPoint(Point p);
     static void Main(string[] args)
     {
-        while(true)
+        while (true)
+        {
+            Thread.Sleep(1000);
+            var p = Cursor.Position;
+            Console.WriteLine($"{p.X}, {p.Y}");
+            IntPtr hwnd = WindowFromPoint(p);
+            StringBuilder buf = new StringBuilder(256);
+            GetWindowText(hwnd, buf, buf.Capacity); // get window text
+            Console.WriteLine("X:{0} Y:{1} hwnd:0x{2:X} text:{3}",
+                p.X, p.Y, hwnd, buf.ToString());
+        }
+
+#if false
+        while (true)
         {
             Thread.Sleep(1000);
 
@@ -19,7 +35,6 @@ class Program
             GetWindowText(hwnd, buf, buf.Capacity);
             Console.WriteLine("hwnd:0x{0:X} text:{1}", hwnd, buf.ToString());
         }
-#if false
         if (true)
         {
             var fullpath = Environment.ExpandEnvironmentVariables(@"%windir%\system32\notepad.exe");
