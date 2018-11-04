@@ -26,14 +26,14 @@ namespace DesktopSample
         }
     }
 
-    class ResidentTest : Form
+    class ResidentTest
     {
         NotifyIcon _icon;
 
         public ResidentTest()
         {
-            this.ShowInTaskbar = false;
-            this.Visible = false;
+            // this.ShowInTaskbar = false;
+            // this.Visible = false;
             this.setComponents();
         }
         ~ResidentTest()
