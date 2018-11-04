@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace DesktopSample
 {
     static class Program
@@ -18,17 +19,18 @@ namespace DesktopSample
         static void Main()
         {
             new ResidentTest();
-            Application.Run();
+            // Application.Run();
 
             // Application.EnableVisualStyles();
             // Application.SetCompatibleTextRenderingDefault(false);
-            // Application.Run(new Form1());
+            Application.Run();
         }
     }
 
     class ResidentTest
     {
         NotifyIcon _icon;
+        ContextMenuStrip _menu;
 
         public ResidentTest()
         {
@@ -39,7 +41,46 @@ namespace DesktopSample
         ~ResidentTest()
         {
         }
-        
+
+        ContextMenuStrip GetMenu()
+        {
+            if (_menu == null)
+            {
+                _menu = new ContextMenuStrip();
+                {
+                    ToolStripMenuItem menuItem = new ToolStripMenuItem();
+                    menuItem.Text = "&Setting and log";
+                    menuItem.Click += new EventHandler(Setting_Click);
+                    _menu.Items.Add(menuItem);
+                }
+                {
+                    ToolStripMenuItem menuItem = new ToolStripMenuItem();
+                    menuItem.Text = "E&xit";
+                    menuItem.Click += new EventHandler(Close_Click);
+                    _menu.Items.Add(menuItem);
+                }
+            }
+            return _menu;
+        }
+
+
+        private void Icon_Click(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left) {
+                GetMenu().Hide();
+                new Form1().Show();
+            }
+            else if (e.Button == MouseButtons.Right)
+            {
+                // GetMenu().Show(Cursor.Position);
+            }
+
+        }
+
+        private void Setting_Click(object sender, EventArgs e)
+        {
+            new Form1().Show();
+        }
 
         private void Close_Click(object sender, EventArgs e)
         {
@@ -51,8 +92,6 @@ namespace DesktopSample
             }
 
             Application.Exit();
-
-            // Application.Exit();
         }
 
         private Icon LoadMainIcon()
@@ -66,13 +105,10 @@ namespace DesktopSample
             _icon = new NotifyIcon();
             _icon.Icon = LoadMainIcon();
             _icon.Visible = true;
-            _icon.Text = "常駐アプリテスト";
-            ContextMenuStrip menu = new ContextMenuStrip();
-            ToolStripMenuItem menuItem = new ToolStripMenuItem();
-            menuItem.Text = "&終了";
-            menuItem.Click += new EventHandler(Close_Click);
-            menu.Items.Add(menuItem);
-            _icon.ContextMenuStrip = menu;
+            _icon.Text = "ThinkPadScrollHelper";
+            _icon.MouseClick += new MouseEventHandler(Icon_Click);
+            // _icon.ContextMenuStrip
+            _icon.ContextMenuStrip = GetMenu();
         }
     }
 }
