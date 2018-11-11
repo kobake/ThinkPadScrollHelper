@@ -23,6 +23,7 @@ namespace WpfSample
         public MainWindow()
         {
             InitializeComponent();
+            //Hide();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

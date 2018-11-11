@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfSample"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="wpf" HorizontalAlignment="Left" Margin="515,22,0,0" VerticalAlignment="Top" Width="253" RenderTransformOrigin="0.5,0.5" Height="125" Click="Button_Click">
+        Title="MainWindow" Height="450" Width="800"
+        WindowStyle="ToolWindow" BorderBrush="Black"
+        
+        >
+    <Grid Margin="0,0,0.0,0">
+        <Button Content="wpf" HorizontalAlignment="Left" Margin="532,285,0,0" VerticalAlignment="Top" Width="253" RenderTransformOrigin="0.5,0.5" Height="125" Click="Button_Click">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
