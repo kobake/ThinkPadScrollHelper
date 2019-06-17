@@ -173,6 +173,7 @@ namespace ThinkPadScrollHelper
                     else if (processPath.EndsWith(@"\ssms.exe")) richScroll = false;
                     else if (processPath.EndsWith(@"\sourcetree.exe")) richScroll = false;
                     else if (processPath.EndsWith(@"\hscrollfun.exe")) richScroll = false;
+                    else if (processPath.EndsWith(@"\LINQPad.exe")) richScroll = false;
                     else if (processPath == "") richScroll = true;
 
                     // ウィンドウに応じてモードを切り替える
