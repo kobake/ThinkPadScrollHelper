@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="257.999" Width="461.333">
-    <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10" >
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10" >
         <Grid Height="30">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
@@ -17,5 +17,11 @@
             <TextBox Grid.Column="1" Padding="4" Width="Auto">Left</TextBox>
             <Button  Grid.Column="2">Right</Button>
         </Grid>
-    </DockPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" AcceptsReturn="True" Padding="4" Width="Auto" Height="100">LOG</TextBox>
+        </Grid>
+    </StackPanel>
 </Window>
