@@ -46,7 +46,7 @@ namespace DesktopSample
             this.linkLabelGitHub.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabelGitHub.AutoSize = true;
-            this.linkLabelGitHub.Location = new System.Drawing.Point(721, 502);
+            this.linkLabelGitHub.Location = new System.Drawing.Point(721, 499);
             this.linkLabelGitHub.Margin = new System.Windows.Forms.Padding(3, 3, 8, 8);
             this.linkLabelGitHub.Name = "linkLabelGitHub";
             this.linkLabelGitHub.Size = new System.Drawing.Size(276, 37);
@@ -117,7 +117,7 @@ namespace DesktopSample
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1005, 547);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1005, 544);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // textBox2
@@ -130,7 +130,7 @@ namespace DesktopSample
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox2.Size = new System.Drawing.Size(999, 453);
+            this.textBox2.Size = new System.Drawing.Size(999, 450);
             this.textBox2.TabIndex = 7;
             // 
             // tableLayoutPanel2
