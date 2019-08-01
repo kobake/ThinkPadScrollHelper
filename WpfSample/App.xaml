@@ -5,6 +5,6 @@
              StartupUri="MainWindow.xaml"
              >
     <Application.Resources>
-         
+        <ResourceDictionary Source="/PresentationFramework.Classic, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;component/themes/classic.xaml"/>
     </Application.Resources>
 </Application>

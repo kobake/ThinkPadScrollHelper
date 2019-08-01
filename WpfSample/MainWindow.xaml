@@ -1,25 +1,104 @@
-﻿<Window x:Class="WpfSample.MainWindow"
+﻿<Window x:Class="ClassicStyle.MainWindow"
+        x:Name="MainWindow1"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfSample"
+        xmlns:local="clr-namespace:ClassicStyle"
         mc:Ignorable="d"
+        ResizeMode="CanResizeWithGrip"
         Title="MainWindow" Height="450" Width="800"
-        WindowStyle="ToolWindow" BorderBrush="Black"
+        
         
         >
-    <Grid Margin="0,0,0.0,0">
-        <Button Content="wpf" HorizontalAlignment="Left" Margin="532,285,0,0" VerticalAlignment="Top" Width="253" RenderTransformOrigin="0.5,0.5" Height="125" Click="Button_Click">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.138"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
+    <Window.Resources>
 
-    </Grid>
+        <!-- Window用カラー -->
+        <SolidColorBrush x:Key="ClassicMainBackgroundKey" Color="#FFF0F0F0"/>
+        <SolidColorBrush x:Key="ClassicMainForegroundKey" Color="Black"/>
+        <SolidColorBrush x:Key="ClassicMainBorderBrushKey" Color="#FFF0F0F0"/>
+
+        <!-- Converter -->
+    </Window.Resources>
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="{x:Static SystemParameters.CaptionHeight}"
+                      ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}"
+                      GlassFrameThickness="0,0,0,1"/>
+    </WindowChrome.WindowChrome>
+
+    <Window.CommandBindings>
+        <!-- 略 -->
+    </Window.CommandBindings>
+
+    <Border BorderBrush="{StaticResource ClassicMainBorderBrushKey}"
+            BorderThickness="2"
+            Background="{StaticResource ClassicMainBackgroundKey}">
+        <Grid>
+
+            <!-- 上からタイトルバー、コンテンツ -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{x:Static SystemParameters.CaptionHeight}"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- タイトルバー -->
+            <Grid Grid.Row="0">
+
+                <!-- 左からアイコン、タイトル、コマンドボタン -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0"
+                       Margin="3"
+                       Source="{Binding Icon, ElementName=MainWindow1}"/>
+
+                <!-- ウィンドウタイトルを表示します。 -->
+                <Grid Grid.Column="1">
+                    <StackPanel HorizontalAlignment="Left"
+                                VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Title, ElementName=MainWindow1}"
+                                   Foreground="White"
+                                   Padding="5,0"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- 最小化、最大化、閉じるボタンを設置します。 -->
+                <Grid Grid.Column="2">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,2,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                TextBlock.FontFamily="Marlett">
+                        <Button Content="0"
+                                Focusable="False"
+                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                ToolTip="最小化"
+                                Command="{x:Static SystemCommands.MinimizeWindowCommand}" />
+                        <Button Content="1"
+                                Focusable="False"
+                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                ToolTip="最大化"
+                                Command="{x:Static SystemCommands.MaximizeWindowCommand}"/>
+                        <Button Content="r"
+                                Focusable="False"
+                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                Margin="2,0,0,0"
+                                ToolTip="閉じる"
+                                Command="{x:Static SystemCommands.CloseWindowCommand}"/>
+                    </StackPanel>
+                </Grid>
+
+            </Grid>
+
+            <!-- コンテンツ -->
+            <Grid Grid.Row="1">
+                
+            </Grid>
+
+        </Grid>
+    </Border>
 </Window>

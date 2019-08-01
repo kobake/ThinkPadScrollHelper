@@ -29,5 +29,12 @@ namespace DesktopSample
         {
 
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // デフォルト値.
+            txtHScrollFunPath.Text = @"C:\Program Files (x86)\Lenovo\ThinkPad Compact Keyboard with TrackPoint driver\HScrollFun.exe";
+            
+        }
     }
 }
